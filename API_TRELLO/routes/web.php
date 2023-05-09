@@ -15,6 +15,3 @@ Route::post('/cards', [TrelloController::class, 'storeCard'])->name('cards.store
 Route::get('/cards/{id}/edit', [TrelloController::class, 'edit'])->name('cards.edit');
 Route::put('/cards/{id}', [TrelloController::class, 'update'])->name('cards.update');
 Route::get('/cards/{boardId}', [TrelloController::class, 'index'])->name('cards.index');
-
-
-
