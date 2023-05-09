@@ -8,7 +8,7 @@
 
 <body>
   <div class="container">
-    <h1>Trello Cards</h1>
+    <h1>My Trello Cards</h1>
     <div style="margin-bottom:3em;">
       <a href="{{ route('cards.create', ['boardId' => $boardId]) }}" class="btn btn-primary">Create New Card</a>
       <a href="{{ route('boards.show') }}" class="btn btn-primary">View boards</B></a>
@@ -35,7 +35,7 @@
           <td><a href="{{ $card['shortUrl'] }}" target="_blank">{{ $card['shortUrl'] }}</a></td>
           <td>{{ $card['due'] ?? 'sin definir' }}</td>
           <td>
-            <a href="{{ route('cards.edit', $card['id']) }}">✏️</a>
+          <a href="{{ route('cards.edit', ['id' => $card['id']]) }}">✏️</a>
           </td>
         </tr>
         @endforeach

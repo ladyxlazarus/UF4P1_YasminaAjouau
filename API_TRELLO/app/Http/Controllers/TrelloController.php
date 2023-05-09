@@ -37,7 +37,7 @@ class TrelloController extends Controller
     {
         return view('trello.create_card', ['idBoard' => $boardId]);
     }
-    
+
     public function storeCard(Request $request)
     {
         $validatedData = $request->validate([
@@ -55,6 +55,7 @@ class TrelloController extends Controller
                 'idBoard' => $validatedData['idBoard'],
                 'name' => $validatedData['name'],
                 'desc' => $validatedData['description'],
+                'due' =>  $request->input('dueDate'),
             ],
         ]);
         return redirect()->route('cards.index', ['boardId' => $validatedData['idBoard']]);
@@ -74,20 +75,18 @@ class TrelloController extends Controller
         return $lists[0]['id'];
     }
 
-
-
-
-    public function edit($cardId)
+    public function edit($id)
     {
         $client = new Client(['base_uri' => 'https://api.trello.com/1/']);
-        $response = $client->request('GET', "cards/{$cardId}", [
+        $response = $client->request('GET', "cards/{$id}", [
             'query' => [
                 'key' => env('TRELLO_KEY'),
                 'token' => env('TRELLO_TOKEN'),
             ],
         ]);
         $card = json_decode($response->getBody(), true);
-        return view('trello.edit', ['card' => $card, 'cardId' => $cardId]);
+        $boardId = $card['idBoard']; // Extract the boardId from the response
+        return view('trello.edit', ['card' => $card, 'cardId' => $id, 'boardId' => $boardId]);
     }
 
     public function update(Request $request, $cardId)
@@ -103,6 +102,8 @@ class TrelloController extends Controller
             ],
         ]);
 
-        return redirect()->route('cards.index')->with('success', 'Card updated successfully');
+        $boardId = $request->input('boardId');
+
+        return redirect()->route('cards.index', ['boardId' => $boardId]);
     }
 }

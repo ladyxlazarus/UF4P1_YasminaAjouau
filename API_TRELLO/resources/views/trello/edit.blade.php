@@ -1,21 +1,32 @@
-<h1>Edit Card</h1>
+<!DOCTYPE html>
+<html>
 
-<form method="POST" action="{{ route('cards.update', $cardId) }}">
-  @csrf
-  @method('PUT')
-  <div>
-    <label for="name">Name:</label>
-    <input type="text" name="name" value="{{ $card['name'] }}" required>
+<head>
+  <title>Trello Cards</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="mt-4 mb-4">Edit Trello Card</h1>
+    <form method="POST" action="{{ route('cards.update', $cardId) }}">
+      @csrf
+      @method('PUT')
+      <div class="form-group">
+        <input type="hidden" name="boardId" value="{{ $boardId }}">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" name="name" value="{{ $card['name'] }}" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" name="description">{{ $card['desc'] }}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="dueDate">Due Date:</label>
+        <input type="date" class="form-control" name="dueDate" value="{{ $card['due'] }}">
+      </div>
+      <button type="submit" class="btn btn-primary">Update Card</button>
+    </form>
   </div>
-  <div>
-    <label for="description">Description:</label>
-    <textarea name="description">{{ $card['desc'] }}</textarea>
-  </div>
-  <div>
-    <label for="dueDate">Due Date:</label>
-    <input type="date" name="dueDate" value="{{ $card['due'] }}">
-  </div>
-  <div>
-    <button type="submit">Update Card</button>
-  </div>
-</form>
+</body>
+</html>
