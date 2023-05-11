@@ -9,11 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Firebase\JWT\JWT;
-use Illuminate\Support\Facades\Config;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Str;
-
-
 
 class AuthController extends Controller
 {

@@ -1,13 +1,17 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TMDBController;
 use App\Http\Controllers\TrelloController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::get('/', function () {
-        return redirect()->route('boards.show');
+        return redirect()->route('selectApi');
     });
+    Route::get('/select-api', function () {
+        return view('auth.selectApi');
+    })->name('selectApi');
 
     Route::get('/boards', [TrelloController::class, 'getBoards'])->name('boards.show');
     Route::get('/cards/create/{boardId}', [TrelloController::class, 'showCreateCardForm'])->name('cards.create');
@@ -15,6 +19,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/cards/{id}/edit', [TrelloController::class, 'edit'])->name('cards.edit');
     Route::put('/cards/{id}', [TrelloController::class, 'update'])->name('cards.update');
     Route::get('/cards/{boardId}', [TrelloController::class, 'index'])->name('cards.index');
+    Route::get('/tvshows', [TMDBController::class, 'indexS'])->name('movies.indexShows');
+    Route::get('/movies', [TMDBController::class, 'indexM'])->name('movies.indexMovies');
 });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('loginForm');
