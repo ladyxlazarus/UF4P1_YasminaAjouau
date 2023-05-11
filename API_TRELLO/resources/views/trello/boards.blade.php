@@ -6,6 +6,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 
+<form action="{{ route('logout') }}" method="GET">
+    @csrf
+    <button type="submit">Logout</button>
+</form>
+
 <body>
 <h1>My Trello Boards</h1>
 @foreach($boards as $board)
