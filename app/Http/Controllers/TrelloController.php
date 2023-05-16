@@ -85,7 +85,7 @@ class TrelloController extends Controller
             ],
         ]);
         $card = json_decode($response->getBody(), true);
-        $boardId = $card['idBoard']; // Extract the boardId from the response
+        $boardId = $card['idBoard']; // extraigo el boardId de la respuesta, la necesito para las demas querys
         return view('trello.edit', ['card' => $card, 'cardId' => $id, 'boardId' => $boardId]);
     }
 

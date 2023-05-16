@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col">
                 <div class="d-flex justify-content-between">
-                    <a href="{{ route('marvel.comics') }}" class="btn btn-primary">Go Back</a>
+                    <a href="{{ route('marvel.comics') }}" class="btn btn-primary">Go Back To Comics</a>
                     <form action="{{ route('logout') }}" method="GET">
                         @csrf
                         <button type="submit" class="btn btn-danger">Logout</button>

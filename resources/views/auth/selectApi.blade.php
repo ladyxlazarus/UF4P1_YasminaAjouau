@@ -22,7 +22,7 @@
     <div class="d-flex justify-content-center">
       <a href="{{ route('boards.show') }}" class="btn btn-primary mr-3">Trello API</a>
       <a href="{{ route('movies.indexShows') }}" class="btn btn-primary mr-3">TMDB API</a>
-      <a href="{{ route('marvel.characters') }}" class="btn btn-primary">MARVEL API</a>
+      <a href="{{ route('selectCharactersOrComics') }}" class="btn btn-primary">MARVEL API</a>
     </div>
   </div>
 </body>
