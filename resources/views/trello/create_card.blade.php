@@ -37,7 +37,7 @@
         <label for="dueDate">Due Date:</label>
         <input type="date" class="form-control" name="dueDate">
       </div>
-      <button type="submit" class="btn btn-primary">Create card</button>
+      <button type="submit" class="btn btn-success">Create card</button>
       <a href="{{ route('boards.show') }}" class="btn btn-primary">Go back to boards</B></a>
     </form>
   </div>

@@ -19,6 +19,7 @@
   </div>
   <div class="container d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
     <h1>Select an API</h1>
+    <p>The Trello API contains endpoints for POST and PATCH requests.</p>
     <div class="d-flex justify-content-center">
       <a href="{{ route('boards.show') }}" class="btn btn-primary mr-3">Trello API</a>
       <a href="{{ route('movies.indexShows') }}" class="btn btn-primary mr-3">TMDB API</a>
