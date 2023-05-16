@@ -30,6 +30,11 @@
     </div>
     <div class="container">
         <h1 class="my-4">Movies</h1>
+        @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @else
         @if (isset($movie))
         <h1>{{ $movie->title }}</h1>
         <p>{{ $movie->overview}}</p>
@@ -44,6 +49,7 @@
             </select>
             <button type="submit" class="btn btn-primary">Show details</button>
         </form>
+        @endif
         @endif
     </div>
 </body>

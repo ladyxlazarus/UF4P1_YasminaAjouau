@@ -5,6 +5,20 @@
   <title>Practica 1 UF4 PHP</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+<div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-between">
+                    <a href="{{ route('loginForm') }}" class="btn btn-primary">Go Back To Login</a>
+                </div>
+            </div>
+        </div>
+</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

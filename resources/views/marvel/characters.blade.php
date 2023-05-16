@@ -30,6 +30,11 @@
     </div>
     <div class="container">
         <h1>Characters</h1>
+        @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @else
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
@@ -50,6 +55,7 @@
                 </tbody>
             </table>
         </div>
+        @endif
     </div>
 </body>
 

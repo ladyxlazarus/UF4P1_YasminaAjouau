@@ -19,6 +19,11 @@
                 </div>
             </div>
         </div>
+        @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @else
         <h1>List of {{ $character->name }}'s comics</h1>
         <p>{{ $character->description }}</p>
         <ul class="list-group">
@@ -26,6 +31,7 @@
             <li class="list-group-item">{{ $comic->name }}</li>
             @endforeach
         </ul>
+        @endif
     </div>
 </body>
 

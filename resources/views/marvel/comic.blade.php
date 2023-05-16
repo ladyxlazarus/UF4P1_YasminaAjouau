@@ -20,6 +20,11 @@
             </div>
         </div>
         <h1>Comic</h1>
+        @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @else
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">{{ $comic['title'] }}</h5>
@@ -35,6 +40,7 @@
                 </ul>
             </div>
         </div>
+        @endif
     </div>
 </body>
 
