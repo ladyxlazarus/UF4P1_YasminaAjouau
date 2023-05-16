@@ -23,7 +23,7 @@
   <div class="container">
     <h1>My Trello Cards</h1>
     <div style="margin-bottom:3em;">
-      <a href="{{ route('cards.create', ['boardId' => $boardId]) }}" class="btn btn-primary">Create New Card</a>
+      <a href="{{ route('cards.create', ['boardId' => $boardId]) }}" class="btn btn-success">Create New Card</a>
       <a href="{{ route('boards.show') }}" class="btn btn-primary">View boards</B></a>
     </div>
     <table class="table">
