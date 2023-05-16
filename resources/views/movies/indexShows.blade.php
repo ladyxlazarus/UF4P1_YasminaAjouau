@@ -30,6 +30,11 @@
     </div>
     <div class="container">
         <h1 class="my-4">Shows</h1>
+        @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @else
         @if (isset($serie))
         <h1>{{ $serie->name }}</h1>
         @if($serie->overview !== '')
@@ -48,6 +53,7 @@
             </select>
             <button type="submit" class="btn btn-primary">Show details</button>
         </form>
+        @endif
         @endif
     </div>
 </body>
