@@ -7,6 +7,19 @@
 </head>
 
 <body>
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="d-flex justify-content-between">
+          <a href="{{ route('selectApi') }}" class="btn btn-primary">GO BACK API MENU</a>
+          <form action="{{ route('logout') }}" method="GET">
+            @csrf
+            <button type="submit" class="btn btn-danger">Logout</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container">
     <h1>My Trello Cards</h1>
     <div style="margin-bottom:3em;">

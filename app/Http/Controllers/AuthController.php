@@ -77,31 +77,32 @@ class AuthController extends Controller
         $user->save();
         Auth::login($user);
 
-        return redirect()->route('boards.show');
+        return redirect()->route('auth.selectApi');
     }
 
     public function logout(Request $request)
     {
         $token = $request->bearerToken();
-
+    
         if (!$token) {
             // Token no presente por inicio con Google
             Auth::logout();
-
-            return redirect('/');
+    
+            return redirect()->route('loginForm');
         }
-
+    
         // Decodificar token JWT y validar firma
         try {
             $payload = JWT::decode($token, config('jwt.secret'), ['HS256']);
         } catch (Exception $e) {
             return response()->json(['error' => 'Token inválido'], 401);
         }
-
+    
         Auth::logout();
-
-        return redirect('/');
+    
+        return redirect()->route('loginForm');
     }
+    
 
     public function redirectToGoogle()
     {
@@ -129,6 +130,6 @@ class AuthController extends Controller
             Auth::login($newUser);
         }
 
-        return redirect()->route('boards.show');
+        return redirect()->route('selectApi');
     }
 }

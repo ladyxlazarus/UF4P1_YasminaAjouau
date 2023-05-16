@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Practica 1 UF4 PHP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-llOy2KymmdB+6wI1mzL1gZuE6UJsa6o+X9fB1z+ztJL0x0zv5f8WknQR+2M0li20J+zEK0vXKXuyyBrsLl4xOQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css" integrity="sha512-HLY+skDl/qX8JL05NtHSG1Q4zgf+o3P/EDZJtEBHbrRvpy1gAfc+DyVEjoHxV7FvJLl0g7CivjTGiTc7rJrT3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -5,7 +15,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
                         @method('POST')
 
@@ -54,12 +64,13 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-                                <a href="{{ route('register') }}" class="btn btn-light">
+                                <a href="{{ route('register') }}" class="btn btn-outline-primary">
                                     {{ __('Register') }}
                                 </a>
-                                <a href="{{ route('redirectToGoogle') }}" class="btn btn-google">
-            {{ __('Login with Google') }}
-        </a>
+                                <a href="{{ route('redirectToGoogle') }}" class="btn btn-light">
+                                    <img src="{{ asset('images/google.png') }}" alt="Google Login" style="width: 20px; height: 20px; margin-right: 5px;">
+                                    {{ __('Login with Google') }}
+                                </a>
                             </div>
                         </div>
                     </form>

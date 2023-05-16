@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Practica 1 UF4 PHP</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
