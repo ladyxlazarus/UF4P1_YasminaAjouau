@@ -1,0 +1,43 @@
+version: "3"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - TRELLO_KEY=${TRELLO_KEY}
+      - TRELLO_SECRET=${TRELLO_SECRET}
+      - TRELLO_TOKEN=${TRELLO_TOKEN}
+      - TRELLO_BOARD_ID=${TRELLO_BOARD_ID}
+      - TRELLO_LIST_ID=${TRELLO_LIST_ID}
+      - TRELLO_BOARD_NAME=${TRELLO_BOARD_NAME}
+      - TMDB_API_KEY=${TMDB_API_KEY}
+      - MARVEL_PUBLIC_KEY=${MARVEL_PUBLIC_KEY}
+      - MARVEL_PRIVATE_KEY=${MARVEL_PRIVATE_KEY}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - GOOGLE_REDIRECT_URI=${GOOGLE_REDIRECT_URI}
+      - JWT_SECRET=${JWT_SECRET}
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
