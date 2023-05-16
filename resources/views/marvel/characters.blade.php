@@ -11,12 +11,20 @@
         <div class="row">
             <div class="col">
                 <div class="d-flex justify-content-between">
-                    <a href="{{ route('selectCharactersOrComics') }}" class="btn btn-primary">GO BACK TO MARVEL API MENU</a>
+                    <a href="{{ route('selectApi') }}" class="btn btn-primary">GO BACK API MENU</a>
                     <form action="{{ route('logout') }}" method="GET">
                         @csrf
                         <button type="submit" class="btn btn-danger">Logout</button>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <a href="{{ route('marvel.characters') }}" class="btn btn-primary">Characters</a>
+                <a href="{{ route('marvel.comics') }}" class="btn btn-primary">Comics</a>
             </div>
         </div>
     </div>
@@ -28,7 +36,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
-                        <th>View</th>
+                        <th>Appearances</th>
                     </tr>
                 </thead>
                 <tbody>

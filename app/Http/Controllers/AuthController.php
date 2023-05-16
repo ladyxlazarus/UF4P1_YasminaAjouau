@@ -40,7 +40,7 @@ class AuthController extends Controller
                 //     'token' => $jwt
                 // ]);
 
-                return redirect()->route('boards.show');
+                return redirect()->route('selectApi');
             }
         } catch (\PDOException $e) {
             // error de conexión a la base de datos
@@ -77,32 +77,32 @@ class AuthController extends Controller
         $user->save();
         Auth::login($user);
 
-        return redirect()->route('auth.selectApi');
+        return redirect()->route('selectApi');
     }
 
     public function logout(Request $request)
     {
         $token = $request->bearerToken();
-    
+
         if (!$token) {
             // Token no presente por inicio con Google
             Auth::logout();
-    
+
             return redirect()->route('loginForm');
         }
-    
+
         // Decodificar token JWT y validar firma
         try {
             $payload = JWT::decode($token, config('jwt.secret'), ['HS256']);
         } catch (Exception $e) {
             return response()->json(['error' => 'Token inválido'], 401);
         }
-    
+
         Auth::logout();
-    
+
         return redirect()->route('loginForm');
     }
-    
+
 
     public function redirectToGoogle()
     {
@@ -117,7 +117,7 @@ class AuthController extends Controller
         $existingUser = User::where('email', $user->getEmail())->first();
 
         if ($existingUser) {
-            // El usuario ya existe, inicia sesión con Laravel
+            // inicia sesión
             Auth::login($existingUser);
         } else {
             // El usuario no existe, crear una nueva cuenta
