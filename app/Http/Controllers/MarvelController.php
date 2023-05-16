@@ -53,13 +53,21 @@ class MarvelController extends Controller
                 'base_uri' => 'https://gateway.marvel.com/v1/public/',
             ]);
 
-            $response = $client->request('GET', 'characters/' . $id, [
-                'query' => $this->getDefaultQueryParams(),
-            ]);
+            try {
 
-            $character = json_decode($response->getBody())->data->results[0];
+                $response = $client->request('GET', 'characters/' . $id, [
+                    'query' => $this->getDefaultQueryParams(),
+                ]);
+            } catch (ClientException $e) {
+                return back()->with('error', 'No character found with the specified ID.');
+            }
 
-            if (!$character) {
+            $responseData = json_decode($response->getBody(), true);
+
+            if ($response->getStatusCode() == 200 && isset($responseData['data']['results'][0])) {
+                $character = $responseData['data']['results'][0];
+                return view('marvel.character', compact('character'));
+            } else {
                 return back()->with('error', 'No character found with the specified ID.');
             }
 

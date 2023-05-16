@@ -24,11 +24,11 @@
             {{ session('error') }}
         </div>
         @else
-        <h1>List of {{ $character->name }}'s comics</h1>
-        <p>{{ $character->description }}</p>
+        <h1>List of {{ $character['name'] }}'s comics</h1>
+        <p>{{ $character['description'] }}</p>
         <ul class="list-group">
-            @foreach ($character->comics->items as $comic)
-            <li class="list-group-item">{{ $comic->name }}</li>
+            @foreach ($character['comics']['items'] as $comic)
+            <li class="list-group-item">{{ $comic['name'] }}</li>
             @endforeach
         </ul>
         @endif
